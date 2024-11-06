@@ -9,9 +9,7 @@ defmodule SandboxFirmware.Application do
   def start(_type, _args) do
     children =
       [
-        # Children for all targets
-        # Starts a worker by calling: SandboxFirmware.Worker.start_link(arg)
-        # {SandboxFirmware.Worker, arg},
+        {Bandit, plug: SandboxFirmware.Plug}
       ] ++ target_children()
 
     # See https://hexdocs.pm/elixir/Supervisor.html

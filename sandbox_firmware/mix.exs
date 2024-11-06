@@ -34,7 +34,7 @@ defmodule SandboxFirmware.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
-      extra_applications: [:logger, :runtime_tools],
+      extra_applications: [:logger, :runtime_tools] ++ [:shared],
       mod: {SandboxFirmware.Application, []}
     ]
   end
@@ -42,6 +42,11 @@ defmodule SandboxFirmware.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
+      {:plug, "~> 1.0"},
+      {:bandit, "~> 1.0"},
+      {:websock, "~> 0.5"},
+      {:websock_adapter, "~> 0.5"},
+
       # Dependencies for all targets
       {:nerves, "~> 1.10", runtime: false},
       {:shoehorn, "~> 0.9.1"},
@@ -60,18 +65,18 @@ defmodule SandboxFirmware.MixProject do
       # bumps to Nerves systems. Since these include Linux kernel and Erlang
       # version updates, please review their release notes in case
       # changes to your application are needed.
-      {:nerves_system_rpi, "~> 1.24", runtime: false, targets: :rpi},
+      # {:nerves_system_rpi, "~> 1.24", runtime: false, targets: :rpi},
       {:nerves_system_rpi0, "~> 1.24", runtime: false, targets: :rpi0},
-      {:nerves_system_rpi2, "~> 1.24", runtime: false, targets: :rpi2},
-      {:nerves_system_rpi3, "~> 1.24", runtime: false, targets: :rpi3},
+      # {:nerves_system_rpi2, "~> 1.24", runtime: false, targets: :rpi2},
+      # {:nerves_system_rpi3, "~> 1.24", runtime: false, targets: :rpi3},
       {:nerves_system_rpi3a, "~> 1.24", runtime: false, targets: :rpi3a},
-      {:nerves_system_rpi4, "~> 1.24", runtime: false, targets: :rpi4},
-      {:nerves_system_rpi5, "~> 0.2", runtime: false, targets: :rpi5},
-      {:nerves_system_bbb, "~> 2.19", runtime: false, targets: :bbb},
-      {:nerves_system_osd32mp1, "~> 0.15", runtime: false, targets: :osd32mp1},
-      {:nerves_system_x86_64, "~> 1.24", runtime: false, targets: :x86_64},
-      {:nerves_system_grisp2, "~> 0.8", runtime: false, targets: :grisp2},
-      {:nerves_system_mangopi_mq_pro, "~> 0.6", runtime: false, targets: :mangopi_mq_pro}
+      {:nerves_system_rpi4, "~> 1.24", runtime: false, targets: :rpi4}
+      # {:nerves_system_rpi5, "~> 0.2", runtime: false, targets: :rpi5},
+      # {:nerves_system_bbb, "~> 2.19", runtime: false, targets: :bbb},
+      # {:nerves_system_osd32mp1, "~> 0.15", runtime: false, targets: :osd32mp1},
+      # {:nerves_system_x86_64, "~> 1.24", runtime: false, targets: :x86_64},
+      # {:nerves_system_grisp2, "~> 0.8", runtime: false, targets: :grisp2},
+      # {:nerves_system_mangopi_mq_pro, "~> 0.6", runtime: false, targets: :mangopi_mq_pro}
     ]
   end
 
